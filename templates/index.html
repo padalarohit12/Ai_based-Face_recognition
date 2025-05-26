@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI-Based Face Recognition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body, html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 420px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    color: #00ffe7;
+  }
+
+  .description {
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: #a0a0a0;
+    letter-spacing: 0.1em;
+  }
+
+  .keywords {
+    color: #00ffe7;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+  }
+
+  .btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn {
+  flex: 1;
+  background: linear-gradient(145deg, #e6fdf9, #c3f7f1);
+  color: #004d47;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 550;
+  font-size: 1.15rem;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.15),
+    -4px -4px 10px rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inset shine */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.2),
+    -3px -3px 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Active press effect */
+.btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+  background: linear-gradient(145deg, #c3f7f1, #e6fdf9);
+}
+
+/* Focus outline for accessibility */
+.btn:focus {
+  outline: 2px solid #00b3a1;
+  outline-offset: 3px;
+}
+
+  /* Subtle background animation */
+  body::before {
+    content: "";
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at center, #8b00ff 0%, transparent 70%);
+    opacity: 0.15;
+    animation: pulse 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.35; }
+  }
+
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>AI-Based Face Recognition</h1>
+    <p class="description">
+      <span class="keywords">Secure • Smart • Seamless</span><br/>
+      Experience the future of secure identity verification powered by AI.
+    </p>
+     <!-- FORM to Add New Face -->
+    <form method="POST" action="/collect" style="margin-bottom: 20px;">
+      <input type="number" name="user_id" placeholder="Enter User ID" required 
+             style="padding: 10px; margin-bottom: 10px; width: 100%; border-radius: 8px;" />
+      <button class="btn" type="submit">Add New Face</button>
+    </form>
+    <!-- Buttons for Training and Recognition -->
+    <form method="POST" action="/train" style="margin-bottom: 10px;">
+      <button class="btn" type="submit">Train Model</button>
+    </form>
+
+    <form method="POST" action="/recognize">
+      <button class="btn" type="submit">Recognize Face</button>
+    </form>
+  </div>
+</body>
+</html>
